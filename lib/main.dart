@@ -3,7 +3,6 @@ import 'package:flutter_application_1/views/bookList.dart';
 import 'package:flutter_application_1/views/bookNotes.dart';
 import 'package:flutter_application_1/views/bookStatistics.dart';
 import 'package:firebase_core/firebase_core.dart'; // Import firebase_core
-import 'firebase_options.dart'; // Import firebase_options.dart
 
 /// Flutter code sample for [NavigationBar].
 
