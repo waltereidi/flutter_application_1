@@ -1,0 +1,4 @@
+flutter emulators 
+flutter emulators --launch Pixel_6_API_31
+flutter run
+
