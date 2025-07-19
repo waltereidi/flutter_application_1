@@ -2,3 +2,7 @@ flutter emulators
 flutter emulators --launch Pixel_6_API_31
 flutter run
 
+Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+optionalfeatures.exe
+
+flutter emulators --launch Pixel_5
