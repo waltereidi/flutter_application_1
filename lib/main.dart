@@ -40,29 +40,29 @@ class _NavigationExampleState extends State<NavigationExample> {
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.home),
+            selectedIcon: Icon(Icons.book),
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: 'Books',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications_sharp)),
-            label: 'Notifications',
+            icon: Badge(child: Icon(Icons.assessment)),
+            label: 'Statistics',
           ),
           NavigationDestination(
-            icon: Badge(label: Text('2'), child: Icon(Icons.messenger_sharp)),
-            label: 'Messages',
+            icon: Badge(label: Text('2'), child: Icon(Icons.auto_stories)),
+            label: 'Notes',
           ),
         ],
       ),
       body: <Widget>[
         /// Home page
+        BookList(),
+        Bookstatistics(),
         BookNotes(),
 
         /// Notifications page
-        BookList(),
 
         /// Messages page
-        Bookstatistics(),
       ][currentPageIndex],
     );
   }

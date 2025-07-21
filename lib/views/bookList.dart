@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/BookCardDTO.dart';
+import 'package:flutter_application_1/views/widgets/bookCard.dart';
 
 class BookList extends StatelessWidget {
   const BookList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    var s = Padding(
       padding: EdgeInsets.all(8.0),
       child: Column(
-        children: <Widget>[
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.notifications_sharp),
-              title: Text('Notification 1s'),
-              subtitle: Text('This is a notification'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.notifications_sharp),
-              title: Text('Notification 2'),
-              subtitle: Text('This is a notification'),
-            ),
-          ),
-        ],
+        children: <Widget>[BookCard(dto: BookCardDTO(id: 'id'))],
       ),
     );
+    return s;
   }
 }
