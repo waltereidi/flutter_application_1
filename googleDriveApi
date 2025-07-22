@@ -1,0 +1,11 @@
+ https://www.googleapis.com/drive/v3/about?fields=user,storageQuota
+
+ 
+
+
+ https://www.googleapis.com/drive/v3/files/:fileId/permissions
+
+ https://www.googleapis.com/drive/v3/files?q='root'+in+parents+and+trashed=false&fields=files(id,name,mimeType)
+ https://www.googleapis.com/drive/v3/files?fields=files(id,name,mimeType)
+ https://www.googleapis.com/auth/drive.metadata.readonly
+ https://www.googleapis.com/auth/drive
