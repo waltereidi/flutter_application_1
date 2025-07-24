@@ -29,17 +29,15 @@ class BookList extends StatelessWidget {
 
         final files = snapshot.data ?? [];
 
-        // Aqui é onde a substituição acontece
-        final bookCards = files.map((file) {
-          final dto = file;
-
-          return dto;
-        }).toList();
-
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: <Widget>[BookCard(dto: bookCards)]),
-          //child: SingleChildScrollView(child: Column(children: bookCards)),
+          child: ListView.builder(
+            itemCount: files.length,
+            itemBuilder: (context, index) {
+              final dto = files[index];
+              return BookCard(dto: dto);
+            },
+          ),
         );
       },
     );
@@ -47,7 +45,7 @@ class BookList extends StatelessWidget {
 
   Future<List<BookCardDTO>> loadDriveFiles() async {
     final String response = await rootBundle.loadString(
-      'mocks/drive_files.json',
+      'assets/drive_files.json',
     );
     final List<dynamic> data = jsonDecode(response);
     return data.map((json) => BookCardDTO.fromJson(json)).toList();

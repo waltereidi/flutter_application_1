@@ -15,7 +15,7 @@ class BookCard extends StatelessWidget {
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
-          debugPrint(this.dto.id);
+          //debugPrint(this.dto.FileName);
         },
         child: SizedBox(
           height: 100,
@@ -28,8 +28,8 @@ class BookCard extends StatelessWidget {
                   topLeft: Radius.circular(16),
                   bottomLeft: Radius.circular(16),
                 ),
-                child: Image.network(
-                  'https://www.shutterstock.com/shutterstock/photos/2562942291/display_1500/stock-photo-book-with-open-pages-close-up-books-on-the-shelf-in-school-open-book-on-wooden-table-back-to-2562942291.jpg',
+                child: Image.asset(
+                  "assets/thumbnails/" + dto.FileName,
                   width: 100,
                   height: double.infinity,
                   fit: BoxFit.cover,
@@ -45,9 +45,9 @@ class BookCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
-                        '',
+                        dto.FileName,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class BookCard extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'Subtítulo ou descrição do conteúdo.',
+                        dto.CreatedAt,
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
