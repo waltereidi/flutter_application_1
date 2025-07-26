@@ -1,10 +1,15 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+
 class BookCardDTO {
   String FolderName;
   String FileName;
   String ThumbNail;
   String DownloadLink;
   String FileSize;
-  String CreatedAt;
+  DateTime CreatedAt;
   BookCardDTO({
     required this.FolderName,
     required this.FileName,
@@ -14,13 +19,23 @@ class BookCardDTO {
     required this.CreatedAt,
   });
   factory BookCardDTO.fromJson(Map<String, dynamic> json) {
+    final dateFormat = DateFormat("MMMM d, y 'at' h:mm:ss a");
+
     return BookCardDTO(
       FolderName: json['FolderName'],
       FileName: json['FileName'],
       ThumbNail: json['Thumbnail'],
       DownloadLink: json['DownloadLink'],
       FileSize: json['FileSize'],
-      CreatedAt: json['CreatedAt'],
+      CreatedAt: dateFormat.parse(json['CreatedAt']),
     );
+  }
+
+  static Future<List<BookCardDTO>> loadDriveFiles() async {
+    final String response = await rootBundle.loadString(
+      'assets/drive_files.json',
+    );
+    final List<dynamic> data = jsonDecode(response);
+    return data.map((json) => BookCardDTO.fromJson(json)).toList();
   }
 }

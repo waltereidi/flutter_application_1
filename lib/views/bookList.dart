@@ -17,7 +17,7 @@ class BookList extends StatelessWidget {
   // }
   Widget build(BuildContext context) {
     return FutureBuilder<List<BookCardDTO>>(
-      future: loadDriveFiles(),
+      future: BookCardDTO.loadDriveFiles(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -41,13 +41,5 @@ class BookList extends StatelessWidget {
         );
       },
     );
-  }
-
-  Future<List<BookCardDTO>> loadDriveFiles() async {
-    final String response = await rootBundle.loadString(
-      'assets/drive_files.json',
-    );
-    final List<dynamic> data = jsonDecode(response);
-    return data.map((json) => BookCardDTO.fromJson(json)).toList();
   }
 }

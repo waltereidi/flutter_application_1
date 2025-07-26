@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/BookCardDTO.dart';
+import 'package:intl/intl.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({super.key, required this.dto});
@@ -19,7 +20,7 @@ class BookCard extends StatelessWidget {
         },
 
         child: SizedBox(
-          height: 100,
+          height: 135,
           width: double.infinity, // preenche a largura disponível
           child: Row(
             children: [
@@ -31,6 +32,10 @@ class BookCard extends StatelessWidget {
                 ),
                 child: Image.asset(
                   "assets/thumbnails/" + dto.FileName,
+                  errorBuilder: (context, error, stackTrace) {
+                    // Return an empty container if image not found
+                    return const SizedBox.shrink();
+                  },
                   width: 100,
                   height: double.infinity,
                   fit: BoxFit.cover,
@@ -48,7 +53,9 @@ class BookCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        dto.FileName,
+                        dto.FileName.length > 80
+                            ? dto.FileName.substring(0, 80)
+                            : dto.FileName,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -56,8 +63,8 @@ class BookCard extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        dto.CreatedAt,
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                        DateFormat('dd/MM/yyyy').format(dto.CreatedAt),
+                        style: TextStyle(fontSize: 13, color: Colors.grey),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
