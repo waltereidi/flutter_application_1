@@ -17,6 +17,7 @@ class BookCard extends StatelessWidget {
         onTap: () {
           //debugPrint(this.dto.FileName);
         },
+
         child: SizedBox(
           height: 100,
           width: double.infinity, // preenche a largura disponível
