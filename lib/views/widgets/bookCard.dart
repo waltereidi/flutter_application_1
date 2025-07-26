@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/BookCardDTO.dart';
+import 'package:flutter_application_1/models/bookCardDTO.dart';
 import 'package:intl/intl.dart';
 
 class BookCard extends StatelessWidget {

@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/BookCardDTO.dart';
+import 'package:flutter_application_1/models/bookCardDTO.dart';
+import 'package:flutter_application_1/services/LoadFromJson.dart';
 import 'package:flutter_application_1/views/widgets/bookCard.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
 
 class BookList extends StatelessWidget {
   const BookList({super.key});
 
   @override
-  // Widget build(BuildContext context) {
-  //   var result = Padding(
-  //     padding: EdgeInsets.all(8.0),
-  //     child: Column(children: <Widget>[BookCard(dto: bookCardDTO)]),
-  //   );
-  //   return result;
-  // }
   Widget build(BuildContext context) {
     return FutureBuilder<List<BookCardDTO>>(
-      future: BookCardDTO.loadDriveFiles(),
+      future: LoadFromJson<BookCardDTO>(
+        path: 'assets/drive_files.json',
+        fromJson: (json) => BookCardDTO.fromJson(json),
+      ).loadFromFile(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());

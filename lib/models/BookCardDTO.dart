@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class BookCardDTO {
@@ -29,13 +26,5 @@ class BookCardDTO {
       FileSize: json['FileSize'],
       CreatedAt: dateFormat.parse(json['CreatedAt']),
     );
-  }
-
-  static Future<List<BookCardDTO>> loadDriveFiles() async {
-    final String response = await rootBundle.loadString(
-      'assets/drive_files.json',
-    );
-    final List<dynamic> data = jsonDecode(response);
-    return data.map((json) => BookCardDTO.fromJson(json)).toList();
   }
 }
