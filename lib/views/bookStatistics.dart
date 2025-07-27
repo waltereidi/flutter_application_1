@@ -62,10 +62,10 @@ class Bookstatistics extends StatelessWidget {
                 const SizedBox(height: 32),
 
                 // Gráfico de colunas
-                const Expanded(
+                Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: BarChartStatistics(),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: BarChartStatistics(dto: dto),
                   ),
                 ),
               ],
