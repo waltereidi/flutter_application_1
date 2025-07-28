@@ -1,8 +1,7 @@
 import 'dart:collection';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/BookCardDTO.dart';
+import 'package:flutter_application_1/models/book_card_dto.dart';
 
 class BarChartDTO {
   final int maxY;
@@ -15,7 +14,7 @@ class BarChartDTO {
     required this.chartNames,
   });
 
-  factory BarChartDTO.fromListBookCard(List<BookCardDTO> dto) {
+  factory BarChartDTO.fromListBookCard(List<BookCardDTO> books) {
     List<(int, int)> record = [];
     List<BarChartGroupData> bc = [];
     List<String> cn = [];
@@ -23,11 +22,13 @@ class BarChartDTO {
     int maxY = 0;
     var queue = getColors();
 
-    dto.forEach((f) {
-      if (!record.any((x) => x.$1 == f.CreatedAt.year))
+    books.forEach((f) {
+      if (!record.any((x) => x.$1 == f.CreatedAt.year)) {
         record.add((f.CreatedAt.year, 1));
-      else {
-        int i = record.indexWhere((x) => x.$1 == f.CreatedAt.year.toString());
+      } else {
+        //corrigir
+        int i = record.indexWhere((x) => x.$1 == f.CreatedAt.year);
+        print(i);
         var novo = record.elementAt(i);
         record[i] = (novo.$1, novo.$2 + 1);
         maxY = maxY > novo.$2 + 1 ? novo.$2 + 1 : maxY;

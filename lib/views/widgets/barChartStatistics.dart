@@ -45,6 +45,7 @@ class BarChartStatistics extends StatelessWidget {
             rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           ),
           borderData: FlBorderData(show: false),
+          //corrigir
           barGroups: dto.barChart,
         ),
       ),
@@ -53,15 +54,18 @@ class BarChartStatistics extends StatelessWidget {
 
   Widget bottomTitles(double value, TitleMeta meta) {
     const style = TextStyle(fontSize: 12);
-    switch (value.toInt()) {
-      case 0:
-        return Text('Jan', style: style);
-      case 1:
-        return Text('Fev', style: style);
-      case 2:
-        return Text('Mar', style: style);
-      default:
-        return const SizedBox.shrink();
-    }
+
+    return Text(dto.chartNames[value.toInt()], style: style);
+
+    // switch (value.toInt()) {
+    //   case 0:
+    //     return Text('Jan', style: style);
+    //   case 1:
+    //     return Text('Fev', style: style);
+    //   case 2:
+    //     return Text('Mar', style: style);
+    //   default:
+    //     return const SizedBox.shrink();
+    // }
   }
 }

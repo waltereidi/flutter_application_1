@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/bookCardDTO.dart';
+import 'package:flutter_application_1/models/barChartDTO.dart';
+import 'package:flutter_application_1/models/book_card_dto.dart';
 import 'package:flutter_application_1/services/LoadFromJson.dart';
 import 'package:flutter_application_1/views/widgets/barChartStatistics.dart';
 
@@ -22,8 +23,7 @@ class Bookstatistics extends StatelessWidget {
           return Center(child: Text('Erro: ${snapshot.error}'));
         }
 
-        final dto = snapshot.data ?? [];
-
+        final _dto = snapshot.data ?? [];
         return Scaffold(
           appBar: AppBar(
             title: Text('Quantidade de livros em ${DateTime.now().year}'),
@@ -44,7 +44,7 @@ class Bookstatistics extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        dto
+                        _dto
                             .where(
                               (x) => x.CreatedAt.year == DateTime.now().year,
                             )
@@ -65,7 +65,9 @@ class Bookstatistics extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: BarChartStatistics(dto: dto),
+                    child: BarChartStatistics(
+                      dto: BarChartDTO.fromListBookCard(_dto),
+                    ),
                   ),
                 ),
               ],

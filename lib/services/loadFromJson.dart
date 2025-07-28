@@ -9,7 +9,9 @@ class LoadFromJson<T> {
 
   Future<List<T>> loadFromFile() async {
     final String response = await rootBundle.loadString(path);
+
     final List<dynamic> data = jsonDecode(response);
+
     return data.map((json) => fromJson(json)).toList();
   }
 }
