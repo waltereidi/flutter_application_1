@@ -28,10 +28,10 @@ class BarChartDTO {
       } else {
         //corrigir
         int i = record.indexWhere((x) => x.$1 == f.CreatedAt.year);
-        print(i);
+
         var novo = record.elementAt(i);
         record[i] = (novo.$1, novo.$2 + 1);
-        maxY = maxY > novo.$2 + 1 ? novo.$2 + 1 : maxY;
+        maxY = maxY < novo.$2 + 1 ? novo.$2 + 1 : maxY;
       }
     });
     record.sort((a, b) => a.$1 > b.$1 ? 0 : 1);
@@ -41,12 +41,12 @@ class BarChartDTO {
 
       bc.add(
         BarChartGroupData(
-          x: bc.length + 1,
+          x: bc.length,
           barRods: [
             BarChartRodData(
               toY: f.$2.toDouble(),
               color: queue.removeFirst(),
-              width: 12,
+              width: 24,
             ),
           ],
         ),

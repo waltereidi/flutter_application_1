@@ -56,16 +56,5 @@ class BarChartStatistics extends StatelessWidget {
     const style = TextStyle(fontSize: 12);
 
     return Text(dto.chartNames[value.toInt()], style: style);
-
-    // switch (value.toInt()) {
-    //   case 0:
-    //     return Text('Jan', style: style);
-    //   case 1:
-    //     return Text('Fev', style: style);
-    //   case 2:
-    //     return Text('Mar', style: style);
-    //   default:
-    //     return const SizedBox.shrink();
-    // }
   }
 }
