@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/views/bookList.dart';
 import 'package:flutter_application_1/views/bookNotes.dart';
 import 'package:flutter_application_1/views/bookStatistics.dart';
+import 'package:firebase_core/firebase_core.dart'; // Import firebase_core
+import 'firebase_options.dart'; // Import firebase_options.dart
 
 /// Flutter code sample for [NavigationBar].
 
-void main() => runApp(const NavigationBarApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const NavigationBarApp());
+}
 
 class NavigationBarApp extends StatelessWidget {
   const NavigationBarApp({super.key});
